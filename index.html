@@ -1952,6 +1952,88 @@ function launchFlyingShit() {
 const firstLaunch = 105000 + (Math.random() * 30000 - 15000);
 setTimeout(launchFlyingShit, firstLaunch);
 
+/* ======================================================
+   RANDOM VIDEO POPUP
+   ====================================================== */
+function launchVideoPopup() {
+  const popup = document.createElement('div');
+  popup.style.cssText = `
+    position: fixed;
+    left: ${10 + Math.random() * 60}vw;
+    top: ${10 + Math.random() * 50}vh;
+    width: 280px;
+    background: #0a0400;
+    border: 3px solid #c8a000;
+    z-index: 9999997;
+    box-shadow: 0 0 24px #c8a000aa;
+    font-family: 'Comic Neue', cursive;
+  `;
+
+  const titleBar = document.createElement('div');
+  titleBar.style.cssText = `
+    background: #1a0800;
+    color: #c8a000;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+  `;
+  titleBar.innerHTML = `<span>📼 project_loss.mp4</span><span id="vid-close" style="cursor:pointer;font-size:14px;line-height:1;">✕</span>`;
+
+  const video = document.createElement('video');
+  video.style.cssText = `width: 100%; display: block;`;
+  video.controls = true;
+  video.autoplay = true;
+
+  // try both filenames
+  const src1 = document.createElement('source');
+  src1.src = 'Project loss.mp4';
+  src1.type = 'video/mp4';
+  const src2 = document.createElement('source');
+  src2.src = 'project_loss.mp4';
+  src2.type = 'video/mp4';
+
+  video.appendChild(src1);
+  video.appendChild(src2);
+  video.addEventListener('ended', () => popup.remove());
+
+  popup.appendChild(titleBar);
+  popup.appendChild(video);
+  document.body.appendChild(popup);
+
+  // close button
+  titleBar.querySelector('#vid-close').addEventListener('click', () => {
+    video.pause();
+    popup.remove();
+  });
+
+  // dragging
+  let dragging = false, dragOffX = 0, dragOffY = 0;
+  titleBar.addEventListener('mousedown', e => {
+    dragging = true;
+    const r = popup.getBoundingClientRect();
+    dragOffX = e.clientX - r.left;
+    dragOffY = e.clientY - r.top;
+  });
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    popup.style.left = (e.clientX - dragOffX) + 'px';
+    popup.style.top  = (e.clientY - dragOffY) + 'px';
+  });
+  document.addEventListener('mouseup', () => { dragging = false; });
+
+  // schedule next popup: 2–4 minutes
+  const next = 120000 + Math.random() * 120000;
+  setTimeout(launchVideoPopup, next);
+}
+
+// first popup: 1–3 minutes from page load
+setTimeout(launchVideoPopup, 60000 + Math.random() * 120000);
+
 </script>
 
 </body>
