@@ -1986,19 +1986,11 @@ function launchVideoPopup() {
 
   const video = document.createElement('video');
   video.style.cssText = `width: 100%; display: block;`;
-  video.controls = true;
   video.autoplay = true;
 
   // try both filenames
-  const src1 = document.createElement('source');
-  src1.src = 'Project loss.mp4';
-  src1.type = 'video/mp4';
-  const src2 = document.createElement('source');
-  src2.src = 'project_loss.mp4';
-  src2.type = 'video/mp4';
-
-  video.appendChild(src1);
-  video.appendChild(src2);
+  video.src = Math.random() < 0.7 ? 'Project loss.mp4' : 'project_loss.mp4';
+  video.controls = false;
   video.addEventListener('ended', () => popup.remove());
 
   popup.appendChild(titleBar);
