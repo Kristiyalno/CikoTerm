@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ÇikOTerm — Je Pètinin Termmomettresii lol (calısıyor mı bilemedim)</title>
+<title>ÇikOTerm — Je Pètenin Termmomettresii lol (calısıyor mı bilemedim)</title>
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; cursor: none !important; }
@@ -1819,6 +1819,60 @@ const navColors = ['#ff0000','#ff6600','#00ff00','#0000ff','#ff00ff','#ffff00','
 setInterval(() => {
   document.querySelector('nav').style.borderBottomColor = navColors[Math.floor(Math.random() * navColors.length)];
 }, 700);
+
+/* ======================================================
+   FLYING SHIT
+   ====================================================== */
+function launchFlyingShit() {
+  const SIZE = 96; // px, font-size
+
+  // pick a random vertical lane, keeping the emoji fully on screen
+  const topPct = Math.random() * (window.innerHeight - SIZE - 20);
+
+  // randomise flight duration between 2.5s and 5s
+  const duration = 5000 + Math.random() * 3000;
+
+  const el = document.createElement('div');
+  el.textContent = '💩';
+  el.style.cssText = `
+    position: fixed;
+    top: ${topPct}px;
+    left: -${SIZE + 20}px;
+    font-size: ${SIZE}px;
+    line-height: 1;
+    cursor: pointer !important;
+    pointer-events: all;
+    z-index: 9999999;
+    transition: left ${duration}ms linear, opacity 0.3s;
+    filter: drop-shadow(0 0 12px #8B4513);
+    animation: spin 0.8s linear infinite;
+  `;
+  document.body.appendChild(el);
+
+  el.addEventListener('click', () => {
+    window.open('https://github.com/Kristiyalno/ScheissMidas', '_blank');
+    el.style.opacity = '0';
+    setTimeout(() => el.remove(), 350);
+  });
+
+  // start flying after a frame so the transition fires
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      el.style.left = (window.innerWidth + SIZE + 20) + 'px';
+    });
+  });
+
+  // clean up after it exits
+  setTimeout(() => el.remove(), duration + 400);
+
+  // schedule next launch: 2 minutes ± 15 seconds
+  const next = 105000 + (Math.random() * 30000 - 15000); // 105s ± 15s = 90–120s
+  setTimeout(launchFlyingShit, next);
+}
+
+// first launch: 2 min ± 15 sec from page load
+const firstLaunch = 105000 + (Math.random() * 30000 - 15000);
+setTimeout(launchFlyingShit, firstLaunch);
 
 </script>
 
