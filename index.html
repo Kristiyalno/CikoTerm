@@ -977,6 +977,21 @@ tr.current-phase .status-pill { opacity: 1; }
   nav { padding: 0 14px; }
   .thermo-page, .how-page { padding: 20px 14px 56px; }
 }
+
+* { cursor: none !important; }
+
+#custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  
+  font-size: 2rem;
+  transition: none;
+  filter: drop-shadow(0 0 6px #00ff00);
+  animation: spin 1.5s linear infinite, flicker 0.09s infinite;
+  line-height: 1;
+}
+
 </style>
 </head>
 <body>
@@ -1521,6 +1536,60 @@ tr.current-phase .status-pill { opacity: 1; }
 </div><!-- end scroll-wrapper -->
 
 <script>
+
+
+  const cursor = document.createElement('div');
+cursor.id = 'custom-cursor';
+cursor.textContent = '💩';
+document.body.appendChild(cursor);
+
+const cursorEmojis = ['💩', '🌀', '💨', '☢️', '🦠', '💀', '🤢', '⭐'];
+let cursorEmojiIdx = 0;
+
+let offsetX = 18, offsetY = -22;
+
+setInterval(() => {
+  offsetX = (Math.random() - 0.5) * 120;
+  offsetY = (Math.random() - 0.5) * 120;
+}, 3000);
+
+document.addEventListener('mousemove', e => {
+  cursor.style.left = (e.clientX + offsetX) + 'px';
+  cursor.style.top  = (e.clientY + offsetY) + 'px';
+});
+
+// her 2 saniyede emoji değişir
+setInterval(() => {
+  cursorEmojiIdx = (cursorEmojiIdx + 1) % cursorEmojis.length;
+  cursor.textContent = cursorEmojis[cursorEmojiIdx];
+}, 2000);
+
+// tıklayınca 3 tane kopya fırlar ve kaybolur
+document.addEventListener('click', e => {
+  for (let i = 0; i < 3; i++) {
+    const splat = document.createElement('div');
+    splat.textContent = cursorEmojis[Math.floor(Math.random() * cursorEmojis.length)];
+    splat.style.cssText = `
+      position: fixed;
+      left: ${e.clientX}px;
+      top:  ${e.clientY}px;
+      font-size: ${1 + Math.random()}rem;
+      pointer-events: none;
+      z-index: 999998;
+      opacity: 1;
+      transition: transform 0.8s ease-out, opacity 0.8s;
+      transform: translate(0,0) rotate(0deg);
+    `;
+    document.body.appendChild(splat);
+    requestAnimationFrame(() => {
+      splat.style.transform = `translate(${(Math.random()-0.5)*120}px, ${(Math.random()-0.5)*120}px) rotate(${Math.random()*720}deg)`;
+      splat.style.opacity = '0';
+    });
+    setTimeout(() => splat.remove(), 900);
+  }
+});
+
+
 /* ======================================================
    UPSIDE DOWN SCROLL SABOTAGE
    Every time user tries to scroll up or down,
