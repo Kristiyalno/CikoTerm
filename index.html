@@ -6,7 +6,17 @@
 <title>ÇikOTerm — Je Pètinin Termmomettresii lol (calısıyor mı bilemedim)</title>
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin:0; padding:0; box-sizing:border-box; cursor: none !important; }
+
+#custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  font-size: 2rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px #00ff00);
+  animation: spin 1.5s linear infinite;
+}
 
 :root {
   --poop1: #3d1f00;
@@ -1535,6 +1545,15 @@ tr.current-phase .status-pill { opacity: 1; }
 
 </div><!-- end scroll-wrapper -->
 
+<!-- AUDIO -->
+<audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="fart1"   src="fart1.mp3"></audio>
+<audio id="fart2"   src="fart2.mp3"></audio>
+<audio id="fart3"   src="fart3.mp3"></audio>
+<audio id="burp"    src="burp.mp3"></audio>
+<audio id="splat"   src="splat.mp3"></audio>
+<audio id="boing"   src="boing.mp3"></audio>
+
 <script>
 
 // background music — starts on first user interaction (browser policy)
@@ -1802,15 +1821,6 @@ setInterval(() => {
 }, 700);
 
 </script>
-
-<!-- AUDIO -->
-<audio id="bgMusic" src="music.mp3" loop></audio>
-<audio id="fart1"   src="fart1.mp3"></audio>
-<audio id="fart2"   src="fart2.mp3"></audio>
-<audio id="fart3"   src="fart3.mp3"></audio>
-<audio id="burp"    src="burp.mp3"></audio>
-<audio id="splat"   src="splat.mp3"></audio>
-<audio id="boing"   src="boing.mp3"></audio>
 
 </body>
 </html>
