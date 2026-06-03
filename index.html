@@ -3,63 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ÇikoTerm — Je Pète'nin Termometresi</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<title>ÇikoTerm — Je Pète'nin Termometresi lol</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;600&family=Lato:wght@300;400;700&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --bg: #F7F2EA;
-  --bg2: #EDE5D5;
-  --ink: #1C1008;
-  --choc: #3D1C00;
-  --gold: #B8860B;
-  --amber: #D4920A;
-  --cream: #FDF8F0;
-  --warm-gray: #8A7A6A;
-  --border: rgba(61,28,0,0.15);
+  --bg: #4a3800;
+  --bg2: #2e1f00;
+  --ink: #c8a000;
+  --choc: #8B4513;
+  --gold: #c8a000;
+  --amber: #a87800;
+  --cream: #3a2800;
+  --warm-gray: #8a7000;
+  --border: rgba(180,120,0,0.4);
   --red-zone: #C0392B;
   --blue-zone: #2471A3;
   --green-zone: #1E8449;
   --perfect-zone: #B8860B;
+  --poop: #5c3a00;
+  --fart: #6b4f00;
+  --shit: #3d2600;
+  --mustard: #c8a200;
+}
+
+@keyframes flicker {
+  0%   { color: #00ff00; text-shadow: 0 0 8px #00ff00; }
+  8%   { color: #002200; text-shadow: none; }
+  9%   { color: #00ff00; }
+  15%  { color: #001100; }
+  16%  { color: #00cc00; }
+  40%  { color: #000800; text-shadow: none; }
+  41%  { color: #00ff00; text-shadow: 0 0 4px #006600; }
+  55%  { color: #001400; }
+  56%  { color: #00ff00; }
+  80%  { color: #003300; }
+  81%  { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+  100% { color: #000a00; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wobble {
+  0%,100% { transform: rotate(-5deg) scale(1); }
+  25% { transform: rotate(8deg) scale(1.05); }
+  50% { transform: rotate(-3deg) scale(0.97); }
+  75% { transform: rotate(6deg) scale(1.03); }
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50% { opacity:0.3; }
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-8px) rotate(-2deg); }
+  40% { transform: translateX(8px) rotate(2deg); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(10deg); }
+  66% { transform: translateY(10px) rotate(-8deg); }
+}
+
+@keyframes colorpuke {
+  0%   { background: var(--poop); }
+  25%  { background: #1a0f00; }
+  50%  { background: #2d1800; }
+  75%  { background: #0a0500; }
+  100% { background: var(--poop); }
+}
+
+.flicker-text {
+  animation: flicker 0.12s infinite;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive !important;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
-  background: var(--bg);
-  color: var(--ink);
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  background: var(--poop);
+  color: var(--mustard);
   min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 20% 20%, #2a1500 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, #1a0c00 0%, transparent 40%);
+  overflow-x: hidden;
 }
 
-/* ── NAV ── */
+/* random floating poop emojis */
+.floater {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  z-index: 9999;
+  animation: float 4s ease-in-out infinite;
+  opacity: 0.35;
+}
+
+/* NAV */
 nav {
-  background: var(--choc);
+  background: #1a0a00;
+  border-bottom: 4px solid #c8a000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
-  height: 56px;
+  height: 64px;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.8);
+  animation: colorpuke 3s infinite;
 }
 
 .nav-brand {
-  font-family: 'Libre Baskerville', serif;
-  color: #F5D78E;
-  font-size: 1.1rem;
+  font-family: 'Comic Neue', cursive;
+  color: #00ff00;
+  font-size: 1.3rem;
   letter-spacing: 2px;
   display: flex;
   align-items: center;
   gap: 10px;
+  animation: flicker 0.11s infinite;
+  text-decoration: underline wavy #ff0000;
 }
 
 .nav-brand .dot {
-  width: 8px; height: 8px;
+  width: 12px; height: 12px;
   border-radius: 50%;
-  background: #F5D78E;
-  animation: blink 2s ease infinite;
+  background: #ff6600;
+  animation: blink 0.3s ease infinite;
 }
 
 .tab-bar {
@@ -68,35 +154,37 @@ nav {
 }
 
 .tab-btn {
-  background: transparent;
-  border: none;
-  color: rgba(245,215,142,0.6);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
+  background: #2a1500;
+  border: 3px solid #ff6600;
+  color: #ffcc00;
+  font-family: 'Comic Neue', cursive;
+  font-size: 13px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   padding: 8px 20px;
   cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s;
+  border-radius: 0;
+  transition: all 0.1s;
+  transform: skew(-5deg);
+  animation: wobble 2s infinite;
 }
 
 .tab-btn.active {
-  color: #F5D78E;
-  border-bottom-color: #F5D78E;
+  background: #ff6600;
+  color: #000;
+  font-weight: 900;
 }
 
 .tab-btn:hover:not(.active) {
-  color: rgba(245,215,142,0.9);
+  background: #440000;
+  animation: shake 0.3s infinite;
 }
 
-/* ── PAGES ── */
+/* PAGES */
 .page { display: none; }
 .page.active { display: block; }
 
-/* ══════════════════════════════
-   PAGE 1: THERMOMETER
-══════════════════════════════ */
+/* PAGE 1: THERMOMETER */
 .thermo-page {
   padding: 40px;
   max-width: 1100px;
@@ -105,20 +193,27 @@ nav {
 
 .page-header {
   margin-bottom: 36px;
+  border: 4px dashed #ff6600;
+  padding: 12px;
+  background: #1a0a00;
+  transform: rotate(-1.5deg);
 }
 
 .page-header h2 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.6rem;
-  color: var(--choc);
-  font-weight: 700;
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.8rem;
+  color: #00ff00;
+  font-weight: 900;
+  animation: flicker 0.09s infinite;
+  text-transform: uppercase;
+  text-decoration: underline wavy red;
 }
 
 .page-header p {
-  color: var(--warm-gray);
+  color: #ffcc00;
   font-size: 0.9rem;
   margin-top: 4px;
-  font-style: italic;
+  font-family: 'Comic Neue', cursive;
 }
 
 .thermo-layout {
@@ -128,51 +223,55 @@ nav {
   align-items: start;
 }
 
-/* ── SVG THERMOMETER ── */
+/* SVG THERMOMETER */
 .thermo-card {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  background: #1a0a00;
+  border: 5px solid #ff6600;
+  border-radius: 0;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  box-shadow: 0 4px 24px rgba(61,28,0,0.08);
+  box-shadow: 8px 8px 0 #000, -4px -4px 0 #ff0000;
+  transform: rotate(1deg);
 }
 
 .thermo-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 3px;
+  font-family: 'Comic Neue', cursive;
+  font-size: 12px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--warm-gray);
+  color: #ffcc00;
   align-self: flex-start;
+  text-decoration: underline;
+  animation: flicker 0.15s infinite;
 }
 
 .thermo-svg-wrap {
   position: relative;
   width: 120px;
+  animation: wobble 3s infinite;
 }
 
-/* Big digital readout */
 .big-temp {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 3.2rem;
-  font-weight: 600;
-  color: var(--choc);
+  font-family: 'Comic Neue', cursive;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #00ff00;
   letter-spacing: -2px;
   line-height: 1;
   display: flex;
   align-items: flex-start;
   gap: 2px;
+  animation: flicker 0.08s infinite;
 }
 
 .big-temp .unit {
   font-size: 1.4rem;
   font-weight: 300;
   margin-top: 6px;
-  color: var(--warm-gray);
+  color: #ff6600;
 }
 
 .phase-chip {
@@ -180,24 +279,26 @@ nav {
   align-items: center;
   gap: 8px;
   padding: 7px 14px;
-  border-radius: 20px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  border-radius: 0;
+  font-family: 'Comic Neue', cursive;
+  font-size: 11px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 900;
   transition: all 0.5s ease;
   width: 100%;
   justify-content: center;
+  border: 3px solid #ff6600;
+  animation: flicker 0.1s infinite;
 }
 
 .phase-chip .chip-dot {
-  width: 7px; height: 7px;
+  width: 10px; height: 10px;
   border-radius: 50%;
-  animation: blink 1.5s ease infinite;
+  animation: blink 0.4s ease infinite;
 }
 
-/* ── CONTROLS ── */
+/* CONTROLS */
 .controls-area {
   display: flex;
   flex-direction: column;
@@ -205,25 +306,30 @@ nav {
 }
 
 .panel {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: #1a0a00;
+  border: 4px solid #c8a000;
+  border-radius: 0;
   padding: 24px;
-  box-shadow: 0 2px 12px rgba(61,28,0,0.05);
+  box-shadow: 6px 6px 0 #000;
+  position: relative;
 }
+
+.panel:nth-child(2) { transform: rotate(0.7deg); }
+.panel:nth-child(3) { transform: rotate(-0.5deg); }
+.panel:nth-child(4) { transform: rotate(1.2deg); }
 
 .panel-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 3px;
+  font-family: 'Comic Neue', cursive;
+  font-size: 12px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--warm-gray);
+  color: #ffcc00;
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px dashed #ff6600;
+  animation: flicker 0.14s infinite;
 }
 
-/* Precise slider */
 .slider-container {
   position: relative;
   padding-bottom: 28px;
@@ -235,43 +341,43 @@ nav {
   left: 0; right: 0;
   display: flex;
   justify-content: space-between;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  color: var(--warm-gray);
+  font-family: 'Comic Neue', cursive;
+  font-size: 10px;
+  color: #ffcc00;
 }
 
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
-  height: 8px;
-  border-radius: 4px;
+  height: 12px;
+  border-radius: 0;
   outline: none;
   cursor: pointer;
-  background: var(--bg2);
-  border: 1px solid var(--border);
+  background: linear-gradient(90deg, #3d2600, #8B4513, #3d2600);
+  border: 3px solid #ff6600;
 }
 
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: var(--choc);
-  border: 3px solid var(--cream);
-  box-shadow: 0 2px 8px rgba(61,28,0,0.4);
+  width: 28px; height: 28px;
+  border-radius: 0;
+  background: #ff6600;
+  border: 3px solid #000;
+  box-shadow: 3px 3px 0 #000;
   cursor: grab;
   transition: transform 0.1s;
+  transform: rotate(45deg);
 }
 
 input[type=range]:active::-webkit-slider-thumb {
   cursor: grabbing;
-  transform: scale(1.15);
+  transform: scale(1.3) rotate(45deg);
 }
 
-/* Zone indicator */
 .zone-bar {
   width: 100%;
-  height: 10px;
-  border-radius: 5px;
+  height: 14px;
+  border-radius: 0;
   margin-top: 10px;
   background: linear-gradient(to right,
     #2471A3 0%, #2471A3 20%,
@@ -281,21 +387,21 @@ input[type=range]:active::-webkit-slider-thumb {
     #C0392B 84%, #C0392B 100%
   );
   position: relative;
+  border: 2px solid #000;
 }
 
 .zone-cursor {
   position: absolute;
-  top: -4px;
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  background: white;
-  border: 3px solid var(--choc);
-  transform: translateX(-50%);
+  top: -6px;
+  width: 22px; height: 22px;
+  border-radius: 0;
+  background: #ff6600;
+  border: 3px solid #fff;
+  transform: translateX(-50%) rotate(45deg);
   transition: left 0.4s cubic-bezier(0.34,1.3,0.64,1);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 0 #000;
 }
 
-/* Presets */
 .preset-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -303,117 +409,117 @@ input[type=range]:active::-webkit-slider-thumb {
 }
 
 .preset-btn {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  background: #2a1500;
+  border: 3px solid #c8a000;
+  border-radius: 0;
   padding: 12px 8px;
   cursor: pointer;
   text-align: center;
-  transition: all 0.18s;
+  transition: all 0.1s;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  transform: skew(-3deg);
 }
 
 .preset-btn:hover {
-  background: var(--choc);
-  color: var(--cream);
-  border-color: var(--choc);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(61,28,0,0.25);
+  background: #ff6600;
+  color: #000;
+  border-color: #ff0000;
+  transform: skew(-3deg) scale(1.1) rotate(-2deg);
+  box-shadow: 4px 4px 0 #000;
 }
 
 .preset-btn .p-temp {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--choc);
-  transition: color 0.18s;
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #00ff00;
+  animation: flicker 0.13s infinite;
 }
 
-.preset-btn:hover .p-temp { color: #F5D78E; }
+.preset-btn:hover .p-temp { color: #000; animation: none; }
 
 .preset-btn .p-label {
   font-size: 10px;
-  color: var(--warm-gray);
-  letter-spacing: 0.5px;
-  transition: color 0.18s;
+  color: #ffcc00;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
 }
 
-.preset-btn:hover .p-label { color: rgba(245,215,142,0.7); }
+.preset-btn:hover .p-label { color: #000; }
 
-/* Phase table */
 .phase-table {
   width: 100%;
   border-collapse: collapse;
 }
 
 .phase-table tr {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid #ff6600;
   transition: background 0.2s;
   cursor: pointer;
 }
 
 .phase-table tr:last-child { border-bottom: none; }
 
-.phase-table tr.current-phase { background: rgba(184,134,11,0.1); }
+.phase-table tr.current-phase { background: rgba(255,102,0,0.2); }
 
 .phase-table td {
   padding: 11px 8px;
   font-size: 0.85rem;
   vertical-align: middle;
+  font-family: 'Comic Neue', cursive;
+  color: #c8a000;
 }
 
-.phase-table .td-color {
-  width: 32px;
-}
+.phase-table .td-color { width: 32px; }
 
 .color-dot {
-  width: 12px; height: 12px;
-  border-radius: 50%;
+  width: 14px; height: 14px;
+  border-radius: 0;
   display: inline-block;
+  border: 2px solid #000;
+  transform: rotate(45deg);
 }
 
 .phase-table .td-temp {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Comic Neue', cursive;
   font-size: 11px;
-  color: var(--warm-gray);
+  color: #ffcc00;
   width: 80px;
 }
 
 .phase-table .td-name {
-  font-weight: 700;
-  color: var(--choc);
+  font-weight: 900;
+  color: #00ff00;
+  animation: flicker 0.16s infinite;
 }
 
 .phase-table .td-note {
   font-size: 11px;
-  color: var(--warm-gray);
-  font-style: italic;
+  color: #c8a000;
 }
 
-.phase-table .td-status {
-  text-align: right;
-}
+.phase-table .td-status { text-align: right; }
 
 .status-pill {
   display: inline-block;
   padding: 2px 8px;
-  border-radius: 10px;
-  font-family: 'JetBrains Mono', monospace;
+  border-radius: 0;
+  font-family: 'Comic Neue', cursive;
   font-size: 9px;
   letter-spacing: 1px;
-  font-weight: 600;
+  font-weight: 900;
   opacity: 0;
   transition: opacity 0.3s;
+  border: 2px solid currentColor;
+  animation: flicker 0.1s infinite;
 }
 
 tr.current-phase .status-pill { opacity: 1; }
 
-/* ══════════════════════════════
-   PAGE 2: HOW IT WORKS
-══════════════════════════════ */
+/* PAGE 2: HOW IT WORKS */
 .how-page {
   max-width: 860px;
   margin: 0 auto;
@@ -421,23 +527,30 @@ tr.current-phase .status-pill { opacity: 1; }
 }
 
 .how-page h2 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 2rem;
-  color: var(--choc);
+  font-family: 'Comic Neue', cursive;
+  font-size: 2.2rem;
+  color: #00ff00;
   margin-bottom: 8px;
+  font-weight: 900;
+  animation: flicker 0.1s infinite;
+  text-decoration: underline wavy red;
+  transform: rotate(-2deg);
+  display: block;
 }
 
 .how-page .lead {
-  color: var(--warm-gray);
+  color: #ffcc00;
   font-size: 1.05rem;
   line-height: 1.7;
   margin-bottom: 48px;
-  font-style: italic;
-  border-left: 3px solid var(--gold);
+  font-family: 'Comic Neue', cursive;
+  border-left: 6px solid #ff6600;
   padding-left: 16px;
+  background: #1a0a00;
+  padding: 12px 16px;
+  border: 3px dashed #ff6600;
 }
 
-/* Principle section */
 .principle-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -450,46 +563,47 @@ tr.current-phase .status-pill { opacity: 1; }
 .principle-section.flip > * { direction: ltr; }
 
 .principle-text h3 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.25rem;
-  color: var(--choc);
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.3rem;
+  color: #ff6600;
   margin-bottom: 12px;
+  font-weight: 900;
+  animation: flicker 0.11s infinite;
 }
 
 .principle-text p {
   font-size: 0.93rem;
   line-height: 1.75;
-  color: #3a2a18;
+  color: #c8a000;
+  font-family: 'Comic Neue', cursive;
 }
 
 .principle-text .highlight-box {
-  background: rgba(184,134,11,0.1);
-  border-left: 3px solid var(--gold);
+  background: #1a0a00;
+  border-left: 4px solid #ff6600;
+  border: 3px solid #ff6600;
   padding: 10px 14px;
-  border-radius: 0 8px 8px 0;
   margin-top: 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--choc);
+  font-family: 'Comic Neue', cursive;
+  font-size: 12px;
+  color: #00ff00;
   line-height: 1.6;
+  animation: flicker 0.12s infinite;
+  transform: rotate(1deg);
 }
 
-/* SVG diagrams */
 .diagram-box {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  background: #1a0a00;
+  border: 4px solid #c8a000;
+  border-radius: 0;
   padding: 24px;
-  box-shadow: 0 2px 16px rgba(61,28,0,0.07);
+  box-shadow: 6px 6px 0 #000;
   text-align: center;
+  transform: rotate(-1deg);
 }
 
-.diagram-box svg {
-  width: 100%;
-  height: auto;
-}
+.diagram-box svg { width: 100%; height: auto; }
 
-/* Steps */
 .steps {
   display: flex;
   flex-direction: column;
@@ -510,8 +624,8 @@ tr.current-phase .status-pill { opacity: 1; }
   left: 29px;
   top: 52px;
   bottom: 0;
-  width: 2px;
-  background: var(--border);
+  width: 4px;
+  background: #ff6600;
 }
 
 .step-num {
@@ -522,40 +636,47 @@ tr.current-phase .status-pill { opacity: 1; }
 }
 
 .step-circle {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: var(--choc);
-  color: #F5D78E;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-  font-size: 13px;
+  width: 36px; height: 36px;
+  border-radius: 0;
+  background: #ff6600;
+  color: #000;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 900;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
+  transform: rotate(45deg);
+  animation: spin 4s linear infinite;
+  border: 2px solid #000;
 }
+
+.step-circle span { transform: rotate(-45deg); display: block; }
 
 .step-body {
   padding: 0 0 36px 20px;
 }
 
 .step-body h4 {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1rem;
-  color: var(--choc);
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.05rem;
+  color: #ff6600;
   margin-bottom: 6px;
   padding-top: 4px;
+  font-weight: 900;
+  animation: flicker 0.13s infinite;
 }
 
 .step-body p {
   font-size: 0.88rem;
-  color: #4a3a28;
+  color: #c8a000;
   line-height: 1.7;
+  font-family: 'Comic Neue', cursive;
 }
 
-/* Molecule visual */
 .molecule-row {
   display: flex;
   align-items: center;
@@ -566,76 +687,130 @@ tr.current-phase .status-pill { opacity: 1; }
 }
 
 .molecule-card {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: #1a0a00;
+  border: 4px solid #c8a000;
+  border-radius: 0;
   padding: 16px 20px;
   text-align: center;
   flex: 1;
   min-width: 130px;
-  box-shadow: 0 2px 10px rgba(61,28,0,0.06);
+  box-shadow: 5px 5px 0 #000;
+  transform: rotate(-1.5deg);
 }
 
+.molecule-card:nth-child(3) { transform: rotate(2deg); }
+
 .molecule-card .m-title {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--choc);
+  font-family: 'Comic Neue', cursive;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #ff6600;
   margin-bottom: 4px;
+  animation: flicker 0.15s infinite;
 }
 
 .molecule-card .m-temp {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.1rem;
+  font-weight: 900;
   margin-bottom: 4px;
+  animation: flicker 0.1s infinite;
 }
 
 .molecule-card .m-desc {
   font-size: 11px;
-  color: var(--warm-gray);
-  font-style: italic;
+  color: #c8a000;
+  font-family: 'Comic Neue', cursive;
 }
 
 .arrow-mid {
-  font-size: 1.4rem;
-  color: var(--gold);
+  font-size: 2rem;
+  color: #ff6600;
   font-weight: bold;
+  animation: bounce 0.8s infinite;
 }
 
-/* Section divider */
 .section-sep {
   border: none;
-  border-top: 1px solid var(--border);
+  border-top: 3px dashed #ff6600;
   margin: 48px 0;
 }
 
 .section-title {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 1.4rem;
-  color: var(--choc);
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.5rem;
+  color: #ff6600;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
   gap: 12px;
+  font-weight: 900;
+  animation: flicker 0.09s infinite;
+  text-decoration: underline;
 }
 
 .section-title::after {
   content: '';
   flex: 1;
-  height: 1px;
-  background: var(--border);
+  height: 3px;
+  background: #ff6600;
 }
 
-/* ── ANIMATIONS ── */
-@keyframes blink {
-  0%,100% { opacity:1; }
-  50% { opacity:0.3; }
+/* RANDOM SPINNING ELEMENTS */
+.random-spin {
+  display: inline-block;
+  animation: spin 2s linear infinite;
+  font-size: 1.5rem;
+  position: absolute;
+  pointer-events: none;
 }
 
-@keyframes mercury-rise {
-  from { height: 0; }
-  to { height: var(--target-h); }
+.random-wobble {
+  animation: wobble 1.2s infinite;
+  display: inline-block;
+}
+
+/* MARQUEE THING */
+.marquee-bar {
+  background: #000;
+  color: #00ff00;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 900;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 6px 0;
+  border-top: 3px solid #ff6600;
+  border-bottom: 3px solid #ff6600;
+  animation: flicker 0.1s infinite;
+}
+
+.marquee-inner {
+  display: inline-block;
+  animation: marquee 12s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(-100%); }
+}
+
+/* STICKER LABEL */
+.sticker {
+  display: inline-block;
+  background: #ff0000;
+  color: #ffff00;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 900;
+  font-size: 11px;
+  padding: 3px 8px;
+  transform: rotate(-8deg);
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  z-index: 10;
+  border: 2px solid #000;
+  animation: wobble 1s infinite;
 }
 
 @media (max-width: 700px) {
@@ -650,149 +825,541 @@ tr.current-phase .status-pill { opacity: 1; }
 </head>
 <body>
 
+<!-- Floating poop decorations -->
+<div class="floater" style="top:15%;left:3%;animation-delay:0s;font-size:2.5rem">💩</div>
+<div class="floater" style="top:40%;right:2%;animation-delay:1.3s;font-size:1.8rem">💨</div>
+<div class="floater" style="top:70%;left:1%;animation-delay:2.1s;font-size:2rem">💩</div>
+<div class="floater" style="top:25%;right:4%;animation-delay:0.7s;font-size:1.5rem">💨</div>
+<div class="floater" style="top:85%;right:5%;animation-delay:1.9s;font-size:2.2rem">💩</div>
+<div class="floater" style="top:55%;left:2%;animation-delay:3s;font-size:1.6rem">💨</div>
+
+<div class="marquee-bar">
+  <span class="marquee-inner">
+    &nbsp;&nbsp;&nbsp;💩 ÇikoTerm Purno — Je Pète'nin GAYRİRESMİ sitesi &nbsp;|&nbsp; 
+    temprlatür önemlidir &nbsp;|&nbsp; 
+    KABUL ETMİYORUZ RESMİ SORUMLULUGU &nbsp;|&nbsp; 
+    💨 gazli çikolata yapma formülü burada &nbsp;|&nbsp; 
+    BU SİTE 1997'DE YAPILDI &nbsp;|&nbsp; 
+    💩 Je Pète sizi sever falan &nbsp;|&nbsp; 
+    UYARI: bu site internet explorer ile uyumludur sadece &nbsp;|&nbsp; 
+    💨 HATIRLATMA: çikolatayı yeme yoksa erirsin &nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
 <nav>
   <div class="nav-brand">
     <div class="dot"></div>
     ÇikoTerm Purno
+    <span style="font-size:0.7rem;color:#ff6600;display:block;line-height:1">by Je Pète</span>
   </div>
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="showPage('thermo', this)">Termometre</button>
-    <button class="tab-btn" onclick="showPage('how', this)">Nasıl Çalışır?</button>
+    <button class="tab-btn active" onclick="showPage('thermo', this)">Termomtre</button>
+    <button class="tab-btn" onclick="showPage('how', this)">Nasıl Çalışır??</button>
   </div>
 </nav>
 
+<!-- PAGE 1: THERMOMETER -->
 <div id="page-thermo" class="page active">
 <div class="thermo-page">
 
-  <div class="page-header">
-    <h2>Çikolata Kristalizasyon Termometresi</h2>
-    <p>Je Pète'nin mutfak laboratuvarı — doğru sıcaklık, mükemmel çikolata</p>
+  <div class="page-header" style="position:relative">
+    <span class="sticker">BOZUK OLABILIR</span>
+    <h2 class="flicker-text">Çikolata Kirstalizyon Termomtresi</h2>
+    <p>Je Pète'nin mutfak labratuvarı — doğrı sıcaklık, mükemmel çikolata (belki)</p>
+    <p style="color:#ff6600;font-size:0.8rem;margin-top:4px">NOT: Je Pête değil, Je Pète. Fark önemli. Veya değil bilmiyoruz.</p>
   </div>
+
+  <div style="text-align:center;margin:12px 0;font-size:2rem;animation:spin 3s linear infinite;display:inline-block">🌀</div>
+  <span style="color:#ff6600;font-family:'Comic Neue',cursive;font-size:0.8rem;animation:flicker 0.1s infinite"> BU ALAN KASITLI OLRAK BOŞ BIRAKILDIK </span>
+  <div style="text-align:center;margin:12px 0;font-size:2rem;animation:spin 2s linear infinite reverse;display:inline-block;margin-left:40px">⭐</div>
 
   <div class="thermo-layout">
 
+    <!-- THERMOMETER SVG -->
     <div class="thermo-card">
-      <div class="thermo-title">Ölçüm Cihazı</div>
+      <div class="thermo-title flicker-text">Ölçüm Cihazı (çalışıyor sanırız)</div>
 
-      <div class="big-temp">
+      <div class="big-temp flicker-text">
         <span id="tempVal">27.0</span><span class="unit"> °C</span>
       </div>
 
+      <!-- SVG Thermometer -->
       <div class="thermo-svg-wrap">
         <svg id="thermoSVG" viewBox="0 0 120 340" xmlns="http://www.w3.org/2000/svg">
-          <rect x="50" y="20" width="20" height="240" rx="10" fill="#e8e0d0" stroke="#c8b89a" stroke-width="1.5"/>
-
+          <rect x="50" y="20" width="20" height="240" rx="10" fill="#1a0a00" stroke="#c8a000" stroke-width="2"/>
           <clipPath id="tubeClip">
             <rect x="53" y="22" width="14" height="236" rx="8"/>
           </clipPath>
-
           <g clip-path="url(#tubeClip)">
-            <rect x="53" y="22"  width="14" height="48"  fill="#2471A3" opacity="0.25"/>  <rect x="53" y="70"  width="14" height="48"  fill="#1E8449" opacity="0.25"/>  <rect x="53" y="118" width="14" height="67"  fill="#B8860B" opacity="0.25"/>  <rect x="53" y="185" width="14" height="40"  fill="#E67E22" opacity="0.25"/>  <rect x="53" y="225" width="14" height="33"  fill="#C0392B" opacity="0.25"/>  </g>
-
-          <g clip-path="url(#tubeClip)">
-            <rect id="mercuryFill" x="55" y="258" width="10" height="0" rx="4"
-              fill="url(#mercGrad)" transform="scale(1,-1) translate(0,-518)"/>
+            <rect x="53" y="22"  width="14" height="48"  fill="#2471A3" opacity="0.5"/>
+            <rect x="53" y="70"  width="14" height="48"  fill="#1E8449" opacity="0.5"/>
+            <rect x="53" y="118" width="14" height="67"  fill="#B8860B" opacity="0.5"/>
+            <rect x="53" y="185" width="14" height="40"  fill="#E67E22" opacity="0.5"/>
+            <rect x="53" y="225" width="14" height="33"  fill="#C0392B" opacity="0.5"/>
           </g>
-
+          <g clip-path="url(#tubeClip)">
+            <rect id="mercuryFill" x="55" y="258" width="10" height="0" rx="2" fill="url(#mercGrad)"/>
+          </g>
           <defs>
             <linearGradient id="mercGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#F5D78E"/>
-              <stop offset="60%" stop-color="#B8860B"/>
-              <stop offset="100%" stop-color="#6B2D00"/>
+              <stop offset="0%" stop-color="#00ff00"/>
+              <stop offset="60%" stop-color="#ff6600"/>
+              <stop offset="100%" stop-color="#ff0000"/>
             </linearGradient>
           </defs>
-
-          <rect x="50" y="20" width="20" height="240" rx="10" fill="none" stroke="#a89070" stroke-width="1.5"/>
-
-          <line x1="42" y1="24"  x2="50" y2="24"  stroke="#8A7A6A" stroke-width="1"/>
-          <text x="39" y="27" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#8A7A6A">60°</text>
-          <line x1="45" y1="48"  x2="50" y2="48"  stroke="#8A7A6A" stroke-width="0.7"/>
-          <text x="42" y="51" text-anchor="end" font-family="JetBrains Mono" font-size="7" fill="#aaa">50°</text>
-          <line x1="42" y1="72"  x2="50" y2="72"  stroke="#8A7A6A" stroke-width="1"/>
-          <text x="39" y="75" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#8A7A6A">40°</text>
-          <line x1="45" y1="84"  x2="50" y2="84"  stroke="#B8860B" stroke-width="0.7"/>
-          <text x="42" y="87" text-anchor="end" font-family="JetBrains Mono" font-size="7" fill="#B8860B">35°</text>
-          <line x1="44" y1="100" x2="70" y2="100" stroke="#B8860B" stroke-width="0.5" stroke-dasharray="2,2"/>
-          <line x1="42" y1="120" x2="50" y2="120" stroke="#8A7A6A" stroke-width="1"/>
-          <text x="39" y="123" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#8A7A6A">30°</text>
-          <line x1="44" y1="124" x2="70" y2="124" stroke="#B8860B" stroke-width="0.5" stroke-dasharray="2,2"/>
-          <line x1="42" y1="168" x2="50" y2="168" stroke="#8A7A6A" stroke-width="1"/>
-          <text x="39" y="171" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#8A7A6A">20°</text>
-          <line x1="42" y1="216" x2="50" y2="216" stroke="#8A7A6A" stroke-width="1"/>
-          <text x="39" y="219" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#8A7A6A">10°</text>
-
-          <text x="74" y="44"  font-family="JetBrains Mono" font-size="7" fill="#C0392B">ERİME</text>
-          <text x="74" y="85"  font-family="JetBrains Mono" font-size="7" fill="#E67E22">SICAK</text>
-          <text x="74" y="122" font-family="JetBrains Mono" font-size="7" fill="#B8860B">TEMPER</text>
-          <text x="74" y="165" font-family="JetBrains Mono" font-size="7" fill="#1E8449">KRİSTAL</text>
-          <text x="74" y="215" font-family="JetBrains Mono" font-size="7" fill="#2471A3">SERT</text>
-
-          <circle cx="60" cy="280" r="18" fill="url(#bulbGrad)" stroke="#a89070" stroke-width="1.5"/>
-          <circle cx="60" cy="280" r="18" fill="none" stroke="#e8d8b0" stroke-width="0.5" opacity="0.5"/>
-          <circle cx="54" cy="274" r="4" fill="white" opacity="0.25"/>
-
+          <rect x="50" y="20" width="20" height="240" rx="10" fill="none" stroke="#ff6600" stroke-width="2"/>
+          <line x1="42" y1="24"  x2="50" y2="24"  stroke="#c8a000" stroke-width="1.5"/>
+          <text x="39" y="27" text-anchor="end" font-family="Comic Neue" font-size="8" fill="#c8a000">60°</text>
+          <line x1="45" y1="48"  x2="50" y2="48"  stroke="#c8a000" stroke-width="0.7"/>
+          <text x="42" y="51" text-anchor="end" font-family="Comic Neue" font-size="7" fill="#c8a000">50°</text>
+          <line x1="42" y1="72"  x2="50" y2="72"  stroke="#c8a000" stroke-width="1"/>
+          <text x="39" y="75" text-anchor="end" font-family="Comic Neue" font-size="8" fill="#c8a000">40°</text>
+          <line x1="45" y1="84"  x2="50" y2="84"  stroke="#ff6600" stroke-width="0.7"/>
+          <text x="42" y="87" text-anchor="end" font-family="Comic Neue" font-size="7" fill="#ff6600">35°</text>
+          <line x1="44" y1="100" x2="70" y2="100" stroke="#ff6600" stroke-width="0.5" stroke-dasharray="2,2"/>
+          <line x1="42" y1="120" x2="50" y2="120" stroke="#c8a000" stroke-width="1"/>
+          <text x="39" y="123" text-anchor="end" font-family="Comic Neue" font-size="8" fill="#c8a000">30°</text>
+          <line x1="44" y1="124" x2="70" y2="124" stroke="#ff6600" stroke-width="0.5" stroke-dasharray="2,2"/>
+          <line x1="42" y1="168" x2="50" y2="168" stroke="#c8a000" stroke-width="1"/>
+          <text x="39" y="171" text-anchor="end" font-family="Comic Neue" font-size="8" fill="#c8a000">20°</text>
+          <line x1="42" y1="216" x2="50" y2="216" stroke="#c8a000" stroke-width="1"/>
+          <text x="39" y="219" text-anchor="end" font-family="Comic Neue" font-size="8" fill="#c8a000">10°</text>
+          <text x="74" y="44"  font-family="Comic Neue" font-size="7" fill="#C0392B">ERİME</text>
+          <text x="74" y="85"  font-family="Comic Neue" font-size="7" fill="#E67E22">SICAK</text>
+          <text x="74" y="122" font-family="Comic Neue" font-size="7" fill="#ff6600">TEMPER</text>
+          <text x="74" y="165" font-family="Comic Neue" font-size="7" fill="#1E8449">KRİSTAL</text>
+          <text x="74" y="215" font-family="Comic Neue" font-size="7" fill="#2471A3">SERT</text>
+          <circle cx="60" cy="280" r="18" fill="url(#bulbGrad)" stroke="#ff6600" stroke-width="2"/>
+          <circle cx="54" cy="274" r="4" fill="white" opacity="0.15"/>
           <defs>
             <radialGradient id="bulbGrad" cx="40%" cy="35%" r="65%">
-              <stop offset="0%" stop-color="#F5D78E" id="bulbLight"/>
-              <stop offset="100%" stop-color="#6B2D00" id="bulbDark"/>
+              <stop offset="0%" stop-color="#ff6600" id="bulbLight"/>
+              <stop offset="100%" stop-color="#1a0000" id="bulbDark"/>
             </radialGradient>
           </defs>
-
-          <polygon id="needleMarker" points="48,258 42,254 42,262" fill="#1C1008" opacity="0.8"/>
+          <polygon id="needleMarker" points="48,258 42,254 42,262" fill="#ff6600" opacity="0.9"/>
         </svg>
       </div>
 
-      <div class="phase-chip" id="phaseChip">
+      <!-- Phase chip -->
+      <div class="phase-chip flicker-text" id="phaseChip">
         <div class="chip-dot" id="chipDot"></div>
         <span id="chipText">KRİSTALİZASYON</span>
       </div>
 
+      <div style="font-size:0.65rem;color:#ff6600;font-family:'Comic Neue',cursive;text-align:center;margin-top:4px;animation:flicker 0.1s infinite">
+        Je Pète bunu onaylamıyor ama ne yapabilir ki
+      </div>
+
     </div>
 
+    <!-- CONTROLS -->
     <div class="controls-area">
 
-      <div class="panel">
-        <div class="panel-label">Sıcaklık Ayarı</div>
+      <!-- Slider -->
+      <div class="panel" style="position:relative">
+        <span class="sticker" style="top:-10px;right:-8px;font-size:9px">UYARI: KAYGAN</span>
+        <div class="panel-label flicker-text">Sıcakllık Ayarı (yaklaşik)</div>
         <div class="slider-container">
           <input type="range" id="tempSlider" min="10" max="60" value="27" step="0.5">
           <div class="zone-bar">
             <div class="zone-cursor" id="zoneCursor"></div>
           </div>
-          <div class="track-labels" style="margin-top:4px">
+          <div class="track-labels" style="margin-top:8px">
             <span>10°C</span><span>20°C</span><span>30°C</span><span>40°C</span><span>50°C</span><span>60°C</span>
           </div>
         </div>
+        <p style="font-size:0.7rem;color:#ff6600;margin-top:8px;font-family:'Comic Neue',cursive">* Bu slider doğru çalışabilir veya çalışmayabilir. Garanti vermiyoruz. Je Pète'ye sormayın.</p>
       </div>
 
+      <!-- Presets -->
       <div class="panel">
-        <div class="panel-label">Hızlı Sıcaklık Noktaları</div>
+        <div class="panel-label flicker-text">Hızlı Sıcakklık Noktaları (tavsiye)</div>
         <div class="preset-grid">
           <div class="preset-btn" onclick="setTemp(16)">
-            <div class="p-temp">16°C</div>
-            <div class="p-label">Buzdolabı</div>
+            <div class="p-temp flicker-text">16°C</div>
+            <div class="p-label">Buzdoabı</div>
           </div>
           <div class="preset-btn" onclick="setTemp(22)">
-            <div class="p-temp">22°C</div>
-            <div class="p-label">Soğuma</div>
+            <div class="p-temp flicker-text">22°C</div>
+            <div class="p-label">Soğıma</div>
           </div>
           <div class="preset-btn" onclick="setTemp(31.5)">
-            <div class="p-temp">31.5°</div>
-            <div class="p-label">✦ Temperleme</div>
+            <div class="p-temp flicker-text">31.5°</div>
+            <div class="p-label">✦ Temprleme</div>
           </div>
           <div class="preset-btn" onclick="setTemp(45)">
-            <div class="p-temp">45°C</div>
-            <div class="p-label">Eritme</div>
+            <div class="p-temp flicker-text">45°C</div>
+            <div class="p-label">Eritmmee</div>
           </div>
+        </div>
+        <div style="margin-top:10px;font-size:0.7rem;color:#c8a000;font-family:'Comic Neue',cursive;border-top:2px dashed #ff6600;padding-top:6px">
+          ÖNEMLİ NOT: Bu butonlar gerçek sıcaklıkları temsil etmez. Ya da temsil eder. Bilmiyoruz. Je Pète de bilmiyor.
         </div>
       </div>
 
+      <!-- Phase reference table -->
       <div class="panel">
-        <div class="panel-label">Çikolata Faz Tablosu</div>
+        <div class="panel-label flicker-text">Çikolata Faz Tablosu (doğruluğu şüpheli)</div>
         <table class="phase-table">
           <tbody>
             <tr id="row-cold" data-min="10" data-max="20" onclick="setTemp(15)">
               <td class="td-color"><div class="color-dot" style="background:#2471A3"></div></td>
               <td class="td-temp">10 – 20°C</td>
-              <td class="td-name">Sertleşme</td>
-              <td class="td-note">Katı, kırılgan</td>
-              <td class="td-status"><span class="status-pill" style
+              <td class="td-name flicker-text">Sertleşme</td>
+              <td class="td-note">Katı, kırılgan (biz de öyleyiz)</td>
+              <td class="td-status"><span class="status-pill" style="background:#0a1520;color:#2471A3">● AKTİF</span></td>
+            </tr>
+            <tr id="row-crystal" data-min="20" data-max="29" onclick="setTemp(25)">
+              <td class="td-color"><div class="color-dot" style="background:#1E8449"></div></td>
+              <td class="td-temp">20 – 29°C</td>
+              <td class="td-name flicker-text">Kristalizasyon</td>
+              <td class="td-note">Parlak, stabbil (iddia ediyoruz)</td>
+              <td class="td-status"><span class="status-pill" style="background:#0a1a0f;color:#1E8449">● AKTİF</span></td>
+            </tr>
+            <tr id="row-temper" data-min="29" data-max="34" onclick="setTemp(31.5)">
+              <td class="td-color"><div class="color-dot" style="background:#B8860B"></div></td>
+              <td class="td-temp">29 – 34°C</td>
+              <td class="td-name flicker-text">Temperleme ✦</td>
+              <td class="td-note">İdeal bölge (Je Pète diyor)</td>
+              <td class="td-status"><span class="status-pill" style="background:#1a1200;color:#B8860B">● AKTİF</span></td>
+            </tr>
+            <tr id="row-warm" data-min="34" data-max="40" onclick="setTemp(37)">
+              <td class="td-color"><div class="color-dot" style="background:#E67E22"></div></td>
+              <td class="td-temp">34 – 40°C</td>
+              <td class="td-name flicker-text">Isınma</td>
+              <td class="td-note">Mat sonuç riski (hayatın güzel metaforu)</td>
+              <td class="td-status"><span class="status-pill" style="background:#1a1000;color:#E67E22">● AKTİF</span></td>
+            </tr>
+            <tr id="row-hot" data-min="40" data-max="60" onclick="setTemp(50)">
+              <td class="td-color"><div class="color-dot" style="background:#C0392B"></div></td>
+              <td class="td-temp">40 – 60°C</td>
+              <td class="td-name flicker-text">Tam Erime</td>
+              <td class="td-note">Kristal yapı bozulur (üzücü)</td>
+              <td class="td-status"><span class="status-pill" style="background:#1a0800;color:#C0392B">● AKTİF</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px;padding:6px;background:#0a0500;border:2px solid #ff6600;font-size:0.7rem;color:#ffcc00;font-family:'Comic Neue',cursive">
+          YASAL UYARI: Bu tablodaki hiçbir şey gerçek değildir. Je Pète avukat tutamaz.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Random spinning star stuck in the page -->
+  <div style="position:relative;height:40px;margin-top:20px">
+    <span style="position:absolute;left:30%;font-size:2.5rem;animation:spin 1.5s linear infinite">⭐</span>
+    <span style="position:absolute;left:60%;font-size:1.8rem;animation:spin 2s linear infinite reverse">💩</span>
+    <span style="position:absolute;left:45%;top:5px;font-size:1.2rem;color:#00ff00;font-family:'Comic Neue',cursive;animation:flicker 0.1s infinite">Je Pète approved!!</span>
+  </div>
+
+</div>
+</div>
+
+<!-- PAGE 2: HOW IT WORKS -->
+<div id="page-how" class="page">
+<div class="how-page">
+
+  <h2 class="flicker-text" style="display:block">Termometre Nasıl Çalışır??? (bilmiyoruz)</h2>
+  <p class="lead flicker-text">
+    ÇikoTerm Purno, sıvı genleşmesi ilkesiyle çalışır. Yani ısı arttıkça sıvı genleşir.
+    Bu bir sır değil. Je Pète bunu internetten okudu. Çikolatacılık için kritik olan her derece,
+    özel renk zonları ile görselleştirilmiştir ama renkler kasıtlı olarak yanlış olabilir.
+    Kullanıcı deneyimini umursamıyoruz. ÇikoTerm Purno. Je Pète.
+  </p>
+
+  <div style="text-align:center;margin:16px 0">
+    <span style="font-size:3rem;animation:spin 2s linear infinite;display:inline-block">🌀</span>
+    <span style="font-size:1rem;color:#ff6600;font-family:'Comic Neue',cursive;animation:flicker 0.1s infinite;margin:0 20px">BU ALAN ANLAMSIZDIR</span>
+    <span style="font-size:3rem;animation:spin 1.5s linear infinite reverse;display:inline-block">💩</span>
+  </div>
+
+  <!-- STEP 1: Principle -->
+  <div class="section-title flicker-text">Temel Fizik İlkesi (veya değil)</div>
+
+  <div class="principle-section">
+    <div class="principle-text">
+      <h3 class="flicker-text">Isısal Genleşme (büyük söz)</h3>
+      <p>
+        Her madde ısındığında genleşir. Bu ÇikoTerm Purno için de geçerlidir muhtemelen.
+        Termometrelerdeki renkli sıvı (genellikle alkol veya galinstan veya başka bir şey),
+        ısı aldığında molekülleri hızlanır. Bu bilimi çok aşmaktadır.
+      </p>
+      <p style="margin-top:10px">
+        Sıvı, dışarı çıkacak tek yeri olan <strong style="color:#ff6600;animation:flicker 0.1s infinite;display:inline-block">dar cam tüp</strong> içinde yukarı doğru yükselir.
+        Je Pète bunu düz cam boru ile test etti ve çalışmadı. Şikayetler için iletişime geçmeyin.
+      </p>
+      <div class="highlight-box flicker-text">
+        Genleşme Formülü:<br>
+        ΔV = V₀ · β · ΔT<br>
+        β = genleşme katsayısı (önemli harf)<br>
+        ΔT = sıcaklık değişimi (İngilizce Delta T, Türkçe Delta T)<br>
+        <br>
+        NOT: Bu formül tamamen doğrudur. Ya da değildir. Je Pète matematik bilmez.
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg">
+        <text x="52" y="16" text-anchor="middle" font-family="Comic Neue" font-size="9" fill="#2471A3">SOĞUK</text>
+        <rect x="42" y="22" width="20" height="190" rx="10" fill="#0a0500" stroke="#c8a000" stroke-width="1.5"/>
+        <clipPath id="c1"><rect x="45" y="24" width="14" height="186" rx="7"/></clipPath>
+        <g clip-path="url(#c1)">
+          <rect x="45" y="150" width="14" height="60" fill="#2471A3" opacity="0.7"/>
+        </g>
+        <rect x="42" y="22" width="20" height="190" rx="10" fill="none" stroke="#ff6600" stroke-width="1.5"/>
+        <circle cx="52" cy="230" r="16" fill="#2471A3" opacity="0.8" stroke="#ff6600" stroke-width="1.5"/>
+        <circle cx="49" cy="160" r="2" fill="#2471A3"/><circle cx="54" cy="170" r="2" fill="#2471A3"/>
+        <circle cx="51" cy="180" r="2" fill="#2471A3"/><circle cx="56" cy="155" r="2" fill="#2471A3"/>
+        <text x="52" y="265" text-anchor="middle" font-family="Comic Neue" font-size="9" fill="#c8a000">Moleküller yavaş</text>
+        <text x="110" y="125" text-anchor="middle" font-size="20" fill="#ff6600">→</text>
+        <text x="110" y="140" text-anchor="middle" font-family="Comic Neue" font-size="9" fill="#ff6600">ISI</text>
+        <text x="168" y="16" text-anchor="middle" font-family="Comic Neue" font-size="9" fill="#C0392B">SICAK</text>
+        <rect x="158" y="22" width="20" height="190" rx="10" fill="#0a0500" stroke="#c8a000" stroke-width="1.5"/>
+        <clipPath id="c2"><rect x="161" y="24" width="14" height="186" rx="7"/></clipPath>
+        <g clip-path="url(#c2)">
+          <rect x="161" y="50" width="14" height="160" fill="#C0392B" opacity="0.7"/>
+        </g>
+        <rect x="158" y="22" width="20" height="190" rx="10" fill="none" stroke="#ff6600" stroke-width="1.5"/>
+        <circle cx="168" cy="230" r="16" fill="#C0392B" opacity="0.8" stroke="#ff6600" stroke-width="1.5"/>
+        <circle cx="163" cy="80" r="2" fill="#C0392B"/><circle cx="170" cy="65" r="2" fill="#C0392B"/>
+        <circle cx="166" cy="100" r="2" fill="#C0392B"/><circle cx="173" cy="90" r="2" fill="#C0392B"/>
+        <circle cx="161" cy="55" r="2" fill="#C0392B"/><circle cx="174" cy="110" r="2" fill="#C0392B"/>
+        <text x="168" y="265" text-anchor="middle" font-family="Comic Neue" font-size="9" fill="#c8a000">Moleküller hızlı</text>
+      </svg>
+    </div>
+  </div>
+
+  <hr class="section-sep">
+
+  <div class="section-title flicker-text">Çikolatada Temperleme Neden Önemli? (cevap: bilmiyoruz)</div>
+
+  <div class="principle-section flip">
+    <div class="principle-text">
+      <h3 class="flicker-text">Kakao Yağı Kristalleri (sesli okuyun)</h3>
+      <p>
+        Çikolata içindeki <strong style="color:#ff6600;animation:flicker 0.1s infinite;display:inline-block">kakao yağı</strong>, farklı sıcaklıklarda farklı kristal yapılar oluşturur.
+        6 farklı kristal tipi vardır. Yalnızca <strong style="color:#00ff00;animation:flicker 0.08s infinite;display:inline-block">Tip V kristali</strong>, çikolataya parlak
+        görünüm verir. Diğerleri berbattır. Je Pète Tip III'ten nefret eder.
+      </p>
+      <p style="margin-top:10px">
+        Temperleme işlemi çok zordur. ÇikoTerm Purno bu işlemi kolaylaştırır iddiasıyla ortaya çıkmıştır.
+        Bu iddiayı destekleyen hiçbir bilimsel kanıt yoktur henüz. Je Pète çalışmaktadır.
+        Lütfen bekleyin. Veya beklemeyin. Özgürsünüz.
+      </p>
+      <div class="highlight-box flicker-text">
+        Tip V Kristal Bölgesi: 29 – 32°C<br>
+        Bu bölgede soğuyan çikolata:<br>
+        ✓ Parlak yüzey (belki)<br>
+        ✓ Sert doku (inşallah)<br>
+        ✓ Uzun raf ömrü (garantisiz)<br>
+        ✗ Je Pète garantisi vermez
+      </div>
+    </div>
+    <div class="diagram-box">
+      <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+        <text x="110" y="18" text-anchor="middle" font-family="Comic Neue" font-size="11" fill="#ff6600" font-weight="bold">Kristal Tipleri (yaklaşık)</text>
+        <rect x="20" y="30" width="24" height="18" rx="0" fill="#aed6f1" stroke="#000" stroke-width="1"/>
+        <text x="32" y="43" text-anchor="middle" font-family="Comic Neue" font-size="8" fill="#1a5276">I</text>
+        <text x="50" y="43" font-family="Comic Neue" font-size="8" fill="#c8a000">17°C — Yumuşak, kötü (gerçekten kötü)</text>
+        <rect x="20" y="56" width="24" height="18" rx="0" fill="#a9cce3" stroke="#000" stroke-width="1"/>
+        <text x="32" y="69" text-anchor="middle" font-family="Comic Neue" font-size="8" fill="#1a5276">II</text>
+        <text x="50" y="69" font-family="Comic Neue" font-size="8" fill="#c8a000">23°C — Yumuşak, kırılgan</text>
+        <rect x="20" y="82" width="24" height="18" rx="0" fill="#82c0dd" stroke="#000" stroke-width="1"/>
+        <text x="32" y="95" text-anchor="middle" font-family="Comic Neue" font-size="8" fill="#1a5276">III</text>
+        <text x="50" y="95" font-family="Comic Neue" font-size="8" fill="#c8a000">26°C — Orta srtlik</text>
+        <rect x="20" y="108" width="24" height="18" rx="0" fill="#5dade2" stroke="#000" stroke-width="1"/>
+        <text x="32" y="121" text-anchor="middle" font-family="Comic Neue" font-size="8" fill="#fff">IV</text>
+        <text x="50" y="121" font-family="Comic Neue" font-size="8" fill="#c8a000">28°C — Sert ama mat (çirkin)</text>
+        <rect x="16" y="133" width="32" height="22" rx="0" fill="#ff6600" stroke="#ffff00" stroke-width="2"/>
+        <text x="32" y="148" text-anchor="middle" font-family="Comic Neue" font-size="9" fill="#fff" font-weight="bold">V ✦</text>
+        <text x="54" y="148" font-family="Comic Neue" font-size="9" fill="#00ff00" font-weight="bold">29–32°C — PARLAK (MÜKEMML)</text>
+        <rect x="20" y="165" width="24" height="18" rx="0" fill="#e74c3c" opacity="0.7" stroke="#000" stroke-width="1"/>
+        <text x="32" y="178" text-anchor="middle" font-family="Comic Neue" font-size="8" fill="#fff">VI</text>
+        <text x="50" y="178" font-family="Comic Neue" font-size="8" fill="#c8a000">36°C — Çok sert, gri leke (rezalet)</text>
+        <text x="8" y="148" font-family="Comic Neue" font-size="14" fill="#ff6600">★</text>
+        <line x1="10" y1="155" x2="200" y2="155" stroke="#3d2600" stroke-width="0.5"/>
+        <text x="110" y="210" text-anchor="middle" font-family="Comic Neue" font-size="9" fill="#ffcc00" font-style="italic">Je Pète'nin hedefi: Tip V kristali (veya uyku)</text>
+      </svg>
+    </div>
+  </div>
+
+  <hr class="section-sep">
+
+  <div class="section-title flicker-text">Temperleme Adımları (sırayla yapmazsanız olur tabii ki)</div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num"><div class="step-circle"><span>1</span></div></div>
+      <div class="step-body">
+        <h4 class="flicker-text">Eritme — 45–50°C (ama dikkatli)</h4>
+        <p>Çikolata tamamen eritilir. Tüm kristal yapılar bozulur. Bu adımda tüm "hafıza" silinir.
+        Je Pète bu adımda çikolatanın yarısını yedi ve devam edemedi. Lütfen daha disiplinli olun.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"><div class="step-circle"><span>2</span></div></div>
+      <div class="step-body">
+        <h4 class="flicker-text">Soğutma — 27–28°C'ye düşürmek</h4>
+        <p>Çikolata mermer tablo üzerinde ya da bain-marie ile 27°C'ye kadar soğutulur.
+        "Bain-marie" Fransızca'dır. Je Pète Fransızca bilmez ama ÇikoTerm Purno bilir.
+        Termometre bu geçişi yeşil zonda gösterir (veya göstermez, kontrol edin).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"><div class="step-circle"><span>3</span></div></div>
+      <div class="step-body">
+        <h4 class="flicker-text">Isıtma — 31–32°C'ye çıkarma (ÇOK ÖNEMLİ)</h4>
+        <p>Çikolata hafifçe ısıtılır. Bu en kritik adımdır diyor Je Pète.
+        Termometresiz yapılamaz. Parmakla da yapılamaz. Güvenerek yaklaşmayın çikolataya.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"><div class="step-circle"><span>4</span></div></div>
+      <div class="step-body">
+        <h4 class="flicker-text">Kalıplama Soğutma — 16–18°C (neredeyse bitti)</h4>
+        <p>Temperlenen çikolata kalıba dökülür. 16°C civarında soğutulursa Tip V kristalleri
+        stabil hale gelir. Sonuç: parlak yüzey, tok ses, enfes kıvam. Ya da olmaz. Deneyin bakayım.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-sep">
+  <div class="section-title flicker-text">Sıcaklığa Göre Çikolata (basit versiyon)</div>
+
+  <div class="molecule-row">
+    <div class="molecule-card">
+      <svg viewBox="0 0 60 50" style="width:60px;height:50px">
+        <line x1="10" y1="10" x2="50" y2="10" stroke="#2471A3" stroke-width="1.5" opacity="0.6"/>
+        <line x1="10" y1="25" x2="50" y2="25" stroke="#2471A3" stroke-width="1.5" opacity="0.6"/>
+        <line x1="10" y1="40" x2="50" y2="40" stroke="#2471A3" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="10" cy="10" r="4" fill="#2471A3"/><circle cx="30" cy="10" r="4" fill="#2471A3"/><circle cx="50" cy="10" r="4" fill="#2471A3"/>
+        <circle cx="10" cy="25" r="4" fill="#2471A3"/><circle cx="30" cy="25" r="4" fill="#2471A3"/><circle cx="50" cy="25" r="4" fill="#2471A3"/>
+        <circle cx="10" cy="40" r="4" fill="#2471A3"/><circle cx="30" cy="40" r="4" fill="#2471A3"/><circle cx="50" cy="40" r="4" fill="#2471A3"/>
+      </svg>
+      <div class="m-title flicker-text">Katı</div>
+      <div class="m-temp flicker-text" style="color:#2471A3">&lt; 20°C</div>
+      <div class="m-desc">Düzenli kristal örgü (sıkılmış)</div>
+    </div>
+    <div class="arrow-mid">→</div>
+    <div class="molecule-card" style="border-color:#ff6600">
+      <svg viewBox="0 0 60 50" style="width:60px;height:50px">
+        <circle cx="12" cy="12" r="4" fill="#ff6600"/><circle cx="28" cy="10" r="4" fill="#ff6600"/><circle cx="48" cy="13" r="4" fill="#ff6600"/>
+        <circle cx="10" cy="28" r="4" fill="#ff6600"/><circle cx="30" cy="26" r="4" fill="#ff6600"/><circle cx="50" cy="29" r="4" fill="#ff6600"/>
+        <circle cx="12" cy="42" r="4" fill="#ff6600"/><circle cx="32" cy="40" r="4" fill="#ff6600"/><circle cx="50" cy="43" r="4" fill="#ff6600"/>
+        <line x1="12" y1="12" x2="28" y2="10" stroke="#ff6600" stroke-width="1" opacity="0.5"/>
+        <line x1="28" y1="10" x2="48" y2="13" stroke="#ff6600" stroke-width="1" opacity="0.5"/>
+      </svg>
+      <div class="m-title flicker-text">Temperleme ✦</div>
+      <div class="m-temp flicker-text" style="color:#ff6600">29–32°C</div>
+      <div class="m-desc">Tip V kristaller oluşuyor (umuyoruz)</div>
+    </div>
+    <div class="arrow-mid">→</div>
+    <div class="molecule-card">
+      <svg viewBox="0 0 60 50" style="width:60px;height:50px">
+        <circle cx="15" cy="8" r="4" fill="#C0392B"/><circle cx="42" cy="12" r="4" fill="#C0392B"/>
+        <circle cx="8" cy="30" r="4" fill="#C0392B"/><circle cx="35" cy="22" r="4" fill="#C0392B"/>
+        <circle cx="52" cy="35" r="4" fill="#C0392B"/><circle cx="20" cy="44" r="4" fill="#C0392B"/>
+        <circle cx="48" cy="8" r="4" fill="#C0392B"/><circle cx="28" cy="36" r="4" fill="#C0392B"/>
+        <line x1="15" y1="8" x2="42" y2="12" stroke="#C0392B" stroke-width="0.5" opacity="0.4"/>
+        <line x1="8" y1="30" x2="35" y2="22" stroke="#C0392B" stroke-width="0.5" opacity="0.4"/>
+      </svg>
+      <div class="m-title flicker-text">Sıvı</div>
+      <div class="m-temp flicker-text" style="color:#C0392B">&gt; 34°C</div>
+      <div class="m-desc">Kristal yapı yok (kaos)</div>
+    </div>
+  </div>
+
+  <hr class="section-sep">
+  <div style="text-align:center;padding:20px;background:#0a0500;border:4px dashed #ff6600;margin-top:24px;font-family:'Comic Neue',cursive">
+    <p style="color:#00ff00;font-size:1.1rem;animation:flicker 0.09s infinite;font-weight:900">ÇikoTerm Purno — Je Pète'nin ürünü</p>
+    <p style="color:#c8a000;font-size:0.8rem;margin-top:8px">© 2024 Her hakkı (yaklaşık olarak) saklıdır. Bazı haklar kaybolmuştur.</p>
+    <p style="color:#ff6600;font-size:0.75rem;margin-top:4px">Bu sitenin herhangi bir yerde çalışması amaçlanmamıştır.</p>
+    <div style="margin-top:16px">
+      <span style="font-size:2rem;animation:spin 2s linear infinite;display:inline-block">💩</span>
+      <span style="font-size:2rem;animation:spin 1.5s linear infinite reverse;display:inline-block;margin:0 20px">⭐</span>
+      <span style="font-size:2rem;animation:spin 2s linear infinite;display:inline-block">💨</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const phases = [
+  { id:'row-cold',    min:10,  max:20,  color:'#2471A3', bg:'#0a1520', label:'SERTLEŞME',    chipStyle:'background:#0a1520;color:#2471A3' },
+  { id:'row-crystal', min:20,  max:29,  color:'#1E8449', bg:'#0a1a0f', label:'KRİSTALİZASYON', chipStyle:'background:#0a1a0f;color:#1E8449' },
+  { id:'row-temper',  min:29,  max:34,  color:'#ff6600', bg:'#1a0a00', label:'TEMPERLEME ✦', chipStyle:'background:#1a0a00;color:#ff6600' },
+  { id:'row-warm',    min:34,  max:40,  color:'#E67E22', bg:'#1a1000', label:'ISINMA',       chipStyle:'background:#1a1000;color:#E67E22' },
+  { id:'row-hot',     min:40,  max:61,  color:'#C0392B', bg:'#1a0800', label:'TAM ERİME',    chipStyle:'background:#1a0800;color:#C0392B' }
+];
+
+function getPhase(t) {
+  return phases.find(p => t >= p.min && t < p.max) || phases[phases.length-1];
+}
+
+function tempToY(t) {
+  return 216 - ((t - 10) / 50) * 192;
+}
+
+function tempToMercuryHeight(t) {
+  const pct = (t - 10) / 50;
+  return Math.max(0, Math.min(236, pct * 236));
+}
+
+function updateUI(t) {
+  t = parseFloat(t);
+  const phase = getPhase(t);
+
+  document.getElementById('tempVal').textContent = t.toFixed(1);
+
+  const fillH = tempToMercuryHeight(t);
+  const mercRect = document.getElementById('mercuryFill');
+  mercRect.setAttribute('y', 258 - fillH);
+  mercRect.setAttribute('height', fillH);
+
+  const ny = tempToY(t);
+  document.getElementById('needleMarker').setAttribute('points', `48,${ny} 42,${ny-4} 42,${ny+4}`);
+
+  document.getElementById('bulbLight').setAttribute('stop-color', phase.color);
+
+  const chip = document.getElementById('phaseChip');
+  chip.setAttribute('style', phase.chipStyle + ';display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:3px solid #ff6600;font-family:Comic Neue,cursive;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;width:100%;justify-content:center;transition:all 0.5s');
+  document.getElementById('chipDot').style.background = phase.color;
+  document.getElementById('chipText').textContent = phase.label;
+
+  const pct = ((t - 10) / 50) * 100;
+  document.getElementById('zoneCursor').style.left = pct + '%';
+
+  phases.forEach(p => {
+    const row = document.getElementById(p.id);
+    if (!row) return;
+    if (t >= p.min && t < p.max) {
+      row.classList.add('current-phase');
+    } else {
+      row.classList.remove('current-phase');
+    }
+  });
+}
+
+function setTemp(val) {
+  document.getElementById('tempSlider').value = val;
+  updateUI(val);
+}
+
+document.getElementById('tempSlider').addEventListener('input', function() {
+  updateUI(this.value);
+});
+
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+updateUI(27);
+</script>
+</body>
+</html>
