@@ -1752,7 +1752,85 @@ function setTemp(val) {
 
 document.getElementById('tempSlider').addEventListener('input', function() {
   updateUI(this.value);
+  if (parseFloat(this.value) >= parseFloat(this.max) || parseFloat(this.value) <= parseFloat(this.min)) {
+    launchBouncingSlider(this);
+  }
 });
+
+function launchBouncingSlider(sliderEl) {
+  if (sliderEl._bouncing) return;
+  sliderEl._bouncing = true;
+
+  const clone = sliderEl.cloneNode(true);
+  const rect = sliderEl.getBoundingClientRect();
+
+  let x = rect.left + window.scrollX;
+  let y = rect.top + window.scrollY;
+  let vx = (Math.random() - 0.5) * 3;
+  let vy = (Math.random() - 0.5) * 3;
+  // ensure it actually moves
+  if (Math.abs(vx) < 0.8) vx = 0.8 * Math.sign(vx) || 0.8;
+  if (Math.abs(vy) < 0.8) vy = 0.8 * Math.sign(vy) || 0.8;
+
+  let scale = 1;
+  let scaleDir = 1;
+  let scaleSpeed = 0.004 + Math.random() * 0.006;
+
+  clone.style.cssText = `
+    position: absolute;
+    left: ${x}px;
+    top: ${y}px;
+    width: ${rect.width}px;
+    z-index: 9999998;
+    pointer-events: all;
+    cursor: grab;
+    transform-origin: center center;
+  `;
+  document.body.appendChild(clone);
+  sliderEl.style.opacity = '0';
+  sliderEl.style.pointerEvents = 'none';
+
+  // keep the clone functional
+  clone.addEventListener('input', function() {
+    updateUI(this.value);
+  });
+
+  let animId;
+  function tick() {
+    const docW = document.documentElement.scrollWidth;
+    const docH = document.documentElement.scrollHeight;
+    const w = rect.width * scale;
+    const h = 30 * scale;
+
+    x += vx;
+    y += vy;
+
+    if (x <= 0) { x = 0; vx = Math.abs(vx); }
+    if (x + w >= docW) { x = docW - w; vx = -Math.abs(vx); }
+    if (y <= 0) { y = 0; vy = Math.abs(vy); }
+    if (y + h >= docH) { y = docH - h; vy = -Math.abs(vy); }
+
+    // random tiny nudges so it doesn't go perfectly straight
+    vx += (Math.random() - 0.5) * 0.15;
+    vy += (Math.random() - 0.5) * 0.15;
+    // clamp speed
+    const speed = Math.sqrt(vx*vx + vy*vy);
+    if (speed > 4) { vx = vx/speed*4; vy = vy/speed*4; }
+    if (speed < 0.5) { vx *= 1.2; vy *= 1.2; }
+
+    scale += scaleDir * scaleSpeed;
+    if (scale > 2.2) { scale = 2.2; scaleDir = -1; scaleSpeed = 0.003 + Math.random() * 0.006; }
+    if (scale < 0.5) { scale = 0.5; scaleDir = 1;  scaleSpeed = 0.003 + Math.random() * 0.006; }
+
+    clone.style.left = x + 'px';
+    clone.style.top  = y + 'px';
+    clone.style.transform = `scale(${scale})`;
+
+    animId = requestAnimationFrame(tick);
+  }
+
+  animId = requestAnimationFrame(tick);
+}
 
 function showPage(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
