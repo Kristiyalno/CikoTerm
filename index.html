@@ -1982,14 +1982,18 @@ function launchVideoPopup() {
     cursor: move;
     user-select: none;
   `;
-  titleBar.innerHTML = `<span>📼 project_loss.mp4</span><span id="vid-close" style="cursor:pointer;font-size:14px;line-height:1;">✕</span>`;
+  titleBar.innerHTML = `<span>📼 ${vidFile}</span><span id="vid-close" style="cursor:pointer;font-size:14px;line-height:1;">✕</span>`;
 
   const video = document.createElement('video');
   video.style.cssText = `width: 100%; display: block;`;
   video.autoplay = true;
 
-  // try both filenames
-  video.src = Math.random() < 0.7 ? 'Project loss.mp4' : 'project_loss.mp4';
+  const vidRoll = Math.random();
+  let vidFile;
+  if (vidRoll < 0.04)       vidFile = 'Örnek Counselor video.mp4';
+  else if (vidRoll < 0.70)  vidFile = 'Project loss.mp4';
+  else                      vidFile = 'project_loss.mp4';
+  video.src = vidFile;
   video.controls = false;
   video.addEventListener('ended', () => popup.remove());
 
