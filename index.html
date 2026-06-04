@@ -1969,6 +1969,12 @@ function launchVideoPopup() {
     font-family: 'Comic Neue', cursive;
   `;
 
+  const vidRoll = Math.random();
+  let vidFile;
+  if (vidRoll < 0.04)       vidFile = 'Örnek Counselor video.mp4';
+  else if (vidRoll < 0.70)  vidFile = 'Project loss.mp4';
+  else                      vidFile = 'project_loss.mp4';
+
   const titleBar = document.createElement('div');
   titleBar.style.cssText = `
     background: #1a0800;
@@ -1988,11 +1994,6 @@ function launchVideoPopup() {
   video.style.cssText = `width: 100%; display: block;`;
   video.autoplay = true;
 
-  const vidRoll = Math.random();
-  let vidFile;
-  if (vidRoll < 0.04)       vidFile = 'Örnek Counselor video.mp4';
-  else if (vidRoll < 0.70)  vidFile = 'Project loss.mp4';
-  else                      vidFile = 'project_loss.mp4';
 
   if (vidFile === 'Örnek Counselor video.mp4') {
     video.src = '';
