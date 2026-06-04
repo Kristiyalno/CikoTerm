@@ -1993,7 +1993,18 @@ function launchVideoPopup() {
   if (vidRoll < 0.04)       vidFile = 'Örnek Counselor video.mp4';
   else if (vidRoll < 0.70)  vidFile = 'Project loss.mp4';
   else                      vidFile = 'project_loss.mp4';
-  video.src = vidFile;
+
+  if (vidFile === 'Örnek Counselor video.mp4') {
+    video.src = '';
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/09m4JUqDa8I?autoplay=1';
+    iframe.style.cssText = 'width:100%;height:160px;border:none;display:block;';
+    iframe.allow = 'autoplay';
+    video.replaceWith(iframe);
+    iframe.addEventListener('load', () => {});
+  } else {
+    video.src = vidFile;
+  }
   video.controls = false;
   video.addEventListener('ended', () => popup.remove());
 
