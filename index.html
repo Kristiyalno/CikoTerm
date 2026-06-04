@@ -1564,7 +1564,7 @@ document.addEventListener('keydown', () => { bgMusic.play().catch(()=>{}); start
 
 function startVolumeChaos() {
   setInterval(() => {
-    const targetVol = 0.20 + Math.random() * 1.30; // 0.20 to 1.50
+    const targetVol = 0.20 + Math.random() * 0.80; // 0.20 to 1.0
     const duration  = 80 + Math.random() * 400; // 80ms to 480ms
     const steps     = 20;
     const stepTime  = duration / steps;
@@ -1574,7 +1574,7 @@ function startVolumeChaos() {
 
     const fade = setInterval(() => {
       step++;
-      bgMusic.volume = Math.min(1.5, Math.max(0.20, startVol + (diff * (step / steps))));
+      bgMusic.volume = Math.min(1, Math.max(0.20, startVol + (diff * (step / steps))));
       if (step >= steps) clearInterval(fade);
     }, stepTime);
 
