@@ -1560,8 +1560,15 @@ tr.current-phase .status-pill { opacity: 1; }
 // background music — starts on first user interaction (browser policy)
 const bgMusic = document.getElementById('bgMusic');
 bgMusic.volume = 0.35;
-document.addEventListener('click', () => { bgMusic.play().catch(()=>{}); startVolumeChaos(); }, { once: true });
-document.addEventListener('keydown', () => { bgMusic.play().catch(()=>{}); startVolumeChaos(); }, { once: true });
+let musicStarted = false;
+function startMusic() {
+  if (musicStarted) return;
+  musicStarted = true;
+  bgMusic.play().catch(()=>{});
+  startVolumeChaos();
+}
+document.addEventListener('click', startMusic, { once: true });
+document.addEventListener('keydown', startMusic, { once: true });
 
 function startVolumeChaos() {
   setInterval(() => {
@@ -1997,26 +2004,29 @@ function launchVideoPopup() {
 
 
   if (vidFile === 'Örnek Counselor video.mp4') {
-    video.src = '';
     const iframe = document.createElement('iframe');
     iframe.src = 'https://www.youtube.com/embed/kZTXpJUcO_Q?autoplay=1';
     iframe.style.cssText = 'width:100%;height:160px;border:none;display:block;';
     iframe.allow = 'autoplay';
-    video.replaceWith(iframe);
-    iframe.addEventListener('load', () => {});
+    popup.appendChild(titleBar);
+    popup.appendChild(iframe);
+    document.body.appendChild(popup);
   } else {
     video.src = vidFile;
+    video.controls = false;
+    video.addEventListener('ended', () => popup.remove());
+    popup.appendChild(titleBar);
+    popup.appendChild(video);
+    document.body.appendChild(popup);
   }
-  video.controls = false;
-  video.addEventListener('ended', () => popup.remove());
 
-  popup.appendChild(titleBar);
-  popup.appendChild(video);
-  document.body.appendChild(popup);
+  // popup.appendChild(titleBar);
+  // popup.appendChild(video);
+  // document.body.appendChild(popup);
 
   // close button
   titleBar.querySelector('#vid-close').addEventListener('click', () => {
-    video.pause();
+    if (video && typeof video.pause === 'function' && document.body.contains(video)) video.pause();
     popup.remove();
   });
 
