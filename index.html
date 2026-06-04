@@ -1999,7 +1999,7 @@ function launchVideoPopup() {
   if (vidFile === 'Örnek Counselor video.mp4') {
     video.src = '';
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube.com/embed/09m4JUqDa8I?autoplay=1';
+    iframe.src = 'https://www.youtube.com/embed/kZTXpJUcO_Q?autoplay=1';
     iframe.style.cssText = 'width:100%;height:160px;border:none;display:block;';
     iframe.allow = 'autoplay';
     video.replaceWith(iframe);
@@ -2035,9 +2035,15 @@ function launchVideoPopup() {
   });
   document.addEventListener('mouseup', () => { dragging = false; });
 
-  // schedule next popup: 2–4 minutes
-  const next = 120000 + Math.random() * 120000;
-  setTimeout(launchVideoPopup, next);
+  // schedule next popup after this one is gone
+  const observer = new MutationObserver(() => {
+    if (!document.body.contains(popup)) {
+      observer.disconnect();
+      const next = 120000 + Math.random() * 120000;
+      setTimeout(launchVideoPopup, next);
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
 // first popup: 1–3 minutes from page load
